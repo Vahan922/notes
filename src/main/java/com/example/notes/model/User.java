@@ -8,7 +8,7 @@ import java.util.Objects;
 public class User {
 
     @Id
-    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence")
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
@@ -24,6 +24,9 @@ public class User {
 
     @Column(name = "password_hash")
     private String passwordHash;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     public Long getId() {
         return id;
