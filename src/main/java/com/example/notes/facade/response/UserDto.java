@@ -1,6 +1,9 @@
 package com.example.notes.facade.response;
 
+import com.example.notes.model.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.sql.Time;
 
 public class UserDto {
 
@@ -10,10 +13,10 @@ public class UserDto {
     @JsonProperty("email")
     private String email;
 
-    @JsonProperty("firstName")
+    @JsonProperty("first_name")
     private String firstName;
 
-    @JsonProperty("lastname")
+    @JsonProperty("last_name")
     private String lastname;
 
     public UserDto(Long id, String email, String firstName, String lastname) {
@@ -23,6 +26,6 @@ public class UserDto {
         this.lastname = lastname;
     }
 
-    public UserDto() {
+    public UserDto(User user, long id, String title, String note, Time creatTime, Time updateTime) {
     }
 }

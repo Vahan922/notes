@@ -1,7 +1,7 @@
 package com.example.notes.facade.helper;
 
-import com.example.notes.facade.request.UserCreationRequestDto;
-import com.example.notes.facade.request.UserUpdateRequestDto;
+import com.example.notes.facade.request.user.UserCreationRequestDto;
+import com.example.notes.facade.request.user.UserUpdateRequestDto;
 import com.example.notes.facade.response.UserDto;
 import com.example.notes.model.User;
 import com.example.notes.service.request.UserCreateRequest;

@@ -60,6 +60,7 @@ public class UserService {
         result.setFirstName(request.getFirstName());
         result.setLastName(request.getLastname());
         result.setPasswordHash(request.getPassword());
+        result.setPhoneNumber(result.getPhoneNumber());
 
         return result;
     }
@@ -70,6 +71,7 @@ public class UserService {
         result.setFirstName(request.getFirstName());
         result.setLastName(request.getLastname());
         result.setPasswordHash(user.getPasswordHash());
+        result.setPhoneNumber(user.getPhoneNumber());
 
         return result;
     }

@@ -1,8 +1,8 @@
 package com.example.notes.facade;
 
 import com.example.notes.facade.helper.UserMapper;
-import com.example.notes.facade.request.UserCreationRequestDto;
-import com.example.notes.facade.request.UserUpdateRequestDto;
+import com.example.notes.facade.request.user.UserCreationRequestDto;
+import com.example.notes.facade.request.user.UserUpdateRequestDto;
 import com.example.notes.facade.response.UserDto;
 import com.example.notes.model.User;
 import com.example.notes.service.UserService;
@@ -24,7 +24,7 @@ import static org.springframework.util.Assert.notNull;
 @RestController
 public class UserController {
 
-    private static Logger logger = LoggerFactory.getLogger(UserService.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private final UserService userService;
     private final UserMapper mapper;

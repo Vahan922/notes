@@ -1,4 +1,4 @@
-package com.example.notes.facade.request;
+package com.example.notes.facade.request.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

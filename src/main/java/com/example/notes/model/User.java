@@ -1,7 +1,11 @@
 package com.example.notes.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "`user`")
@@ -28,6 +32,9 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Note> notes = new ArrayList<>();
+
     public Long getId() {
         return id;
     }
@@ -46,6 +53,10 @@ public class User {
 
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public void setId(Long id) {
@@ -68,17 +79,32 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
+
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(passwordHash, user.passwordHash);
+
+        return new EqualsBuilder().append(getId(), user.getId()).append(getEmail(), user.getEmail()).append(getFirstName(), user.getFirstName()).append(getLastName(), user.getLastName()).append(getPasswordHash(), user.getPasswordHash()).append(getPhoneNumber(), user.getPhoneNumber()).append(getNotes(), user.getNotes()).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, firstName, lastName, passwordHash);
+        return new HashCodeBuilder(17, 37).append(getId()).append(getEmail()).append(getFirstName()).append(getLastName()).append(getPasswordHash()).append(getPhoneNumber()).append(getNotes()).toHashCode();
     }
 
     @Override
@@ -89,6 +115,8 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", passwordHash='" + passwordHash + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", notes=" + notes +
                 '}';
     }
 }
